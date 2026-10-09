@@ -1,0 +1,111 @@
+/* =========================================================
+   extras.css: sticky nav, light portrait card, work gallery, lightbox
+   Load after styles.css
+   ========================================================= */
+
+/* ---------- Sticky navigation ---------- */
+.st .topbar{position:sticky;top:0;z-index:50;background:rgba(242,245,247,.88);
+  -webkit-backdrop-filter:saturate(1.4) blur(10px);backdrop-filter:saturate(1.4) blur(10px);
+  border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s}
+.st .topbar.scrolled{border-bottom-color:#D3DCE4;box-shadow:0 6px 20px -12px rgba(19,35,58,.25)}
+.st .topbar nav{padding:14px 0}
+.st .prog{position:absolute;left:0;bottom:-1px;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);
+  background:linear-gradient(90deg,#C2416B,#4453C7,#1F86C2,#0E7A75,#7A4FC2)}
+.st nav ul a{position:relative;padding:4px 0;transition:color .2s}
+.st nav ul a::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:2px;border-radius:2px;
+  background:#0E7A75;transform:scaleX(0);transition:transform .25s}
+.st nav ul a.active{color:#13233A}
+.st nav ul a.active::after,.st nav ul a:hover::after{transform:scaleX(1)}
+.st section,.st .hero{scroll-margin-top:76px}
+
+@media (max-width:700px){
+  .st .topbar nav{flex-direction:column;align-items:flex-start;gap:6px;padding:10px 0}
+  .st nav ul{display:flex!important;overflow-x:auto;gap:18px;width:100%;padding-bottom:6px;scrollbar-width:none}
+  .st nav ul::-webkit-scrollbar{display:none}
+  .st nav ul a{white-space:nowrap}
+  .st section,.st .hero{scroll-margin-top:96px}
+}
+
+/* ---------- About layout ---------- */
+.st .about{display:grid;gap:44px;align-items:center}
+@media (min-width:900px){.st .about{grid-template-columns:340px 1fr}}
+
+/* ---------- Light picture card ---------- */
+.st .portrait{position:relative;width:100%;max-width:340px;transition:transform .2s ease-out}
+.st .portrait .frame{position:absolute;inset:0;border-radius:26px;
+  background:linear-gradient(135deg,#FCE4EC,#E4E7FB 40%,#DCEFF9 70%,#DCF2EE);
+  transform:translate(12px,12px);transition:transform .35s}
+.st .portrait:hover .frame{transform:translate(18px,18px) rotate(1.5deg)}
+
+.st .pcard{position:relative;margin:0;background:#fff;border:1px solid #E3E9EE;border-radius:22px;
+  padding:12px;box-shadow:0 20px 44px -26px rgba(19,35,58,.35)}
+.st .pcard .ph{position:relative;aspect-ratio:1/1;border-radius:16px;overflow:hidden;
+  background:#EEF2F5;display:flex;align-items:center;justify-content:center}
+.st .pcard .ini{font-size:84px;font-weight:700;color:#B8C4CF;letter-spacing:-.03em}
+.st .pcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%;
+  display:block;filter:brightness(1.06) contrast(1.02);transition:transform .5s}
+.st .portrait:hover .pcard img{transform:scale(1.05)}
+
+.st .pcard .badge{position:absolute;left:12px;bottom:12px;background:#fff;color:#13233A;border-radius:999px;
+  padding:6px 14px;font-size:13px;font-weight:500;display:flex;align-items:center;gap:8px;
+  box-shadow:0 4px 14px -6px rgba(19,35,58,.35)}
+.st .pcard .badge i{width:8px;height:8px;border-radius:50%;background:#0E7A75;animation:st-blink 1.6s infinite}
+@keyframes st-blink{50%{opacity:.25}}
+
+.st .pcard figcaption{padding:12px 6px 4px;display:flex;flex-direction:column}
+.st .pcard figcaption b{font-weight:500;color:#13233A}
+.st .pcard figcaption span{font-size:14px;color:#4F6174}
+
+/* ---------- Quick facts ---------- */
+.st .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:8px}
+.st .fact{background:#fff;border:1px solid #D3DCE4;border-radius:14px;padding:14px 16px;transition:transform .2s,border-color .2s}
+.st .fact:hover{transform:translateY(-3px);border-color:var(--c)}
+.st .fact .bar{margin-bottom:10px}
+.st .fact b{display:block;font-weight:500;color:#13233A}
+.st .fact span{font-size:14px;color:#4F6174}
+
+/* ---------- Work gallery ---------- */
+.st .gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.st .shot{position:relative;display:block;width:100%;text-align:left;padding:0;margin:0;font-family:inherit;
+  border:1px solid #D3DCE4!important;border-radius:16px;background:#fff!important;color:#13233A!important;
+  overflow:hidden;cursor:pointer;transition:transform .2s ease-out,box-shadow .3s,border-color .3s}
+.st .shot:hover{box-shadow:0 18px 40px -20px rgba(19,35,58,.45);border-color:var(--c)!important}
+.st .shot .vis{aspect-ratio:16/10;background:#F2F5F7;overflow:hidden}
+.st .shot .vis svg,.st .shot .vis img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .5s}
+.st .shot:hover .vis svg,.st .shot:hover .vis img{transform:scale(1.05)}
+.st .shot .cap{padding:14px 16px}
+.st .shot .cap b{display:block;font-weight:500;font-size:17px}
+.st .shot .cap span{font-size:14px;color:#4F6174}
+.st .shot .open{position:absolute;top:12px;right:12px;background:#13233A;color:#fff;font-size:12.5px;
+  padding:4px 10px;border-radius:999px;opacity:0;transform:translateY(-4px);transition:all .25s}
+.st .shot:hover .open,.st .shot:focus-visible .open{opacity:1;transform:none}
+.st .note{font-size:13px;color:#4F6174;margin-top:14px}
+
+/* ---------- Lightbox ---------- */
+.st .lb{border:none;padding:0;border-radius:18px;max-width:min(880px,92vw);width:100%;max-height:92vh;
+  background:#fff;color:#13233A;font-family:"Schibsted Grotesk",system-ui,sans-serif;overflow:auto}
+.st .lb::backdrop{background:rgba(19,35,58,.6);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.st .lb[open]{animation:st-zoom .3s cubic-bezier(.2,.7,.2,1)}
+@keyframes st-zoom{from{opacity:0;transform:scale(.94)}}
+.st .lb .lv{background:#F2F5F7}
+.st .lb .lv svg,.st .lb .lv img{width:100%;height:auto;display:block}
+.st .lb .lt{padding:20px 24px 24px}
+.st .lb h3{margin:0 0 6px;font-size:22px;font-weight:700;color:#13233A!important}
+.st .lb p{margin:0 0 12px;color:#4F6174;line-height:1.6}
+.st .lb .tg{display:inline-block;margin:0 6px 6px 0;background:var(--c);border-color:var(--c);color:#fff}
+.st .lb .x{position:absolute;top:12px;right:12px;width:38px;height:38px;border-radius:50%;border:none;
+  background:#fff;color:#13233A;font-size:22px;line-height:1;cursor:pointer;box-shadow:0 4px 12px -4px rgba(0,0,0,.3)}
+.st .lb .nv{display:flex;gap:8px;margin-top:12px}
+.st .lb .nv button{font-family:inherit;font-size:14px;padding:7px 16px;border-radius:8px;
+  border:1px solid #D3DCE4!important;background:#fff!important;color:#13233A!important;cursor:pointer}
+.st .lb .nv button:hover{border-color:#13233A!important}
+
+/* ---------- Transparent PNG portrait ---------- */
+.st .pcard .ph.loaded .ini{display:none}
+.st .pcard .ph{background:linear-gradient(160deg,#FCE4EC 0%,#E4E7FB 45%,#DCEFF9 75%,#DCF2EE 100%)}
+.st .pcard img{object-fit:cover;object-position:50% 100%;filter:none}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion:reduce){
+  .st .portrait,.st .shot{transform:none!important}
+}

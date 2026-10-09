@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Muhammad Abdullah | BI and Data Analyst</title>
+<meta name="description" content="BI and data analyst in Lahore building production ETL pipelines on BigQuery and Looker Studio dashboards.">
+<meta property="og:title" content="Muhammad Abdullah | BI and Data Analyst">
+<meta property="og:description" content="Production ETL pipelines on BigQuery, 40 Looker Studio dashboards, and monitoring that catches silent failures.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="extras.css">
+<script src="script.js" defer></script>
+<script src="extras.js" defer></script>
+</head>
+<body>
+<div class="st">
+
+  <!-- Sticky navigation -->
+  <div class="topbar">
+    <div class="w">
+      <nav aria-label="Main">
+        <a class="mark" href="#top">Muhammad Abdullah</a>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#pipelines">Pipelines</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="prog" aria-hidden="true"></div>
+  </div>
+
+  <div class="w">
+    <header class="hero" id="top">
+      <div>
+        <h1 aria-label="I keep the data moving, and I notice when it stops.">
+          <span aria-hidden="true"><span class="wd" style="--i:0">I</span> <span class="wd" style="--i:1">keep</span> <span class="wd" style="--i:2">the</span> <span class="wd" style="--i:3">data</span> <span class="wd" style="--i:4">moving,</span> <span class="wd" style="--i:5">and</span> <span class="wd" style="--i:6">I</span> <span class="wd" style="--i:7">notice</span> <span class="wd" style="--i:8">when</span> <span class="wd" style="--i:9">it</span> <span class="wd" style="--i:10">stops.</span></span>
+        </h1>
+        <p class="lede">BI and data analyst in Lahore. I build the BigQuery pipelines and Looker Studio dashboards that sales, marketing, and finance run on.</p>
+        <a class="btn p" href="mailto:abdullahjamshed683@gmail.com">Email me</a><a class="btn" href="Muhammad-Abdullah-CV.pdf" download>Download CV</a>
+        <div class="stats" id="stats">
+          <div><b data-to="70" data-s="+" style="color:#0E7A75">70+</b><span>daily pipeline jobs</span></div>
+          <div><b data-to="8" data-s="+" style="color:#C2416B">8+</b><span>integrated sources</span></div>
+          <div><b data-to="40" data-s="" style="color:#1F86C2">40</b><span>dashboards maintained</span></div>
+        </div>
+      </div>
+
+      <div class="board">
+        <div class="bh"><strong>Today's ingestion run</strong><span id="ctr">0 of 64 loaded</span></div>
+        <div class="grid" id="grid" aria-hidden="true"></div>
+        <div class="lg" id="lg"></div>
+        <div class="log" id="log"></div>
+        <div class="bf"><span>Simulated run. Click a finished job to break it.</span><button class="mini" id="brk" type="button">Force a failure</button></div>
+      </div>
+    </header>
+  </div>
+
+  <div class="mq" aria-label="Tools I use"><div class="tr" id="tr"></div></div>
+
+  <div class="w">
+
+    <!-- About with interactive portrait -->
+    <section id="about">
+      <h2>About</h2>
+      <div class="about">
+            <div class="portrait" id="portrait">
+                <div class="frame" aria-hidden="true"></div>
+                    <figure class="pcard">
+                        <div class="ph">
+                        <span class="ini" aria-hidden="true">MA</span>
+                        <img src="images/profile.png" alt="Portrait of Muhammad Abdullah" 
+                        onload="this.parentNode.classList.add('loaded')" onerror="this.remove()">
+                        <div class="badge"><i aria-hidden="true"></i>Currently at Tkxel</div>
+                        </div>
+                        <figcaption><b>Muhammad Abdullah</b><span>BI and Data Analyst, Lahore</span></figcaption>
+                    </figure>
+                </div>
+            <div>
+          <p class="intro">I joined Tkxel as an intern in December 2024 and moved into pipeline work before the internship ended. Today I own an ingestion layer of 60–70+ daily jobs from eight-plus platforms, and around 40 dashboards for sales, marketing, and finance.</p>
+          <p class="intro">What I care about most is reliability: retries, schema-locked loads, and monitoring that catches silent failures before stakeholders notice.</p>
+          <div class="facts">
+            <div class="fact" style="--c:#C2416B"><div class="bar"></div><b>Lahore, Pakistan</b><span>UTC+5</span></div>
+            <div class="fact" style="--c:#4453C7"><div class="bar"></div><b>Intern to full-time</b><span>in five months</span></div>
+            <div class="fact" style="--c:#0E7A75"><div class="bar"></div><b>BS IT, 2025</b><span>University of the Punjab</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pipelines">
+      <h2>Where the data comes from, and where it goes</h2>
+      <p class="intro">Select a source to trace its path into BigQuery and out to the dashboards. Colors match the job board above.</p>
+      <svg class="pl" id="pl" viewBox="0 0 680 330" role="group" aria-label="Pipeline map from nine sources through BigQuery to sales, marketing, and finance dashboards"></svg>
+      <div class="card" id="sd" aria-live="polite"></div>
+    </section>
+
+    <section>
+      <h2>How I keep 70 jobs honest</h2>
+      <p class="intro">A pipeline that fails silently is worse than one that fails loudly. Most of my engineering time goes here.</p>
+      <div class="rel">
+        <div class="card"><div class="bar" style="--c:#C98A12"></div><h3>Retries with a memory</h3><p>A retry wrapper runs scripts in parallel and logs each one separately, so a flaky API call recovers on its own and leaves a trail.</p></div>
+        <div class="card"><div class="bar" style="--c:#7A4FC2"></div><h3>Schema-locked loads</h3><p>Dtypes and schemas are enforced before data reaches BigQuery, so an upstream change can't quietly corrupt a table.</p></div>
+        <div class="card"><div class="bar" style="--c:#0E7A75"></div><h3>Health views</h3><p>BigQuery views flag stale tables and failed runs, so I hear about a problem before anyone sees a broken dashboard.</p></div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills, with receipts</h2>
+      <p class="intro">Pick a skill to see where I've used it. Matching work in my experience lights up below.</p>
+      <div class="flt" id="flt"></div>
+      <div class="ck" id="ck"></div>
+      <div class="card" id="ev" aria-live="polite"></div>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <p class="intro">Tkxel, Lahore. December 2024 to present.</p>
+      <div class="tl">
+        <details open>
+          <summary><span class="role">Business Intelligence Analyst</span><span class="when">May 2025 to present</span></summary>
+          <ul>
+            <li>Build and maintain Python ETL pipelines that load platform API data into BigQuery, running 60–70+ jobs daily across four to six brands.</li>
+            <li>Integrated Meta Graph API, Meta Ads, LinkedIn Ads, GA4, Search Console, Salesforce, Pardot, and Metricool, plus Selenium scrapers where no API exists.</li>
+            <li>Maintain around 40 Looker Studio dashboards, modelled in BigQuery SQL, with row-level security so each stakeholder sees only their own accounts.</li>
+            <li>Built a retry wrapper with per-script logging and parallel execution, plus BigQuery health views that flag stale tables and failed runs.</li>
+            <li>Optimised Salesforce data models to cut query cost and dashboard load time.</li>
+            <li>Automated finance reporting in Google Sheets with Apps Script.</li>
+          </ul>
+          <div class="tags" data-tags="Python,SQL,BigQuery,Looker Studio,Meta APIs,Salesforce,Selenium,Apps Script,Scheduling and retries,Schema management"></div>
+        </details>
+        <details>
+          <summary><span class="role">Data Analyst intern</span><span class="when">December 2024 to April 2025, converted to full-time</span></summary>
+          <ul>
+            <li>Collected campaign and audience data and prepared it for reporting.</li>
+            <li>Built audience segments used to target campaigns and allocate ad budget.</li>
+            <li>Helped turn manual campaign reporting into repeatable ETL.</li>
+            <li>Learned Python scraping, Google Cloud, BigQuery, and Looker Studio on the job, and moved into pipeline work before the internship ended.</li>
+          </ul>
+          <div class="tags" data-tags="Python,BigQuery,Looker Studio,Selenium,ETL design"></div>
+        </details>
+        <details>
+          <summary><span class="role">BS Information Technology</span><span class="when">University of the Punjab, October 2021 to August 2025</span></summary>
+          <ul><li>Completed alongside full-time work from December 2024.</li></ul>
+        </details>
+      </div>
+    </section>
+
+    <section class="ct" id="contact">
+      <h2>Have data that should be somewhere else?</h2>
+      <ul>
+        <li><a href="mailto:abdullahjamshed683@gmail.com">abdullahjamshed683@gmail.com</a></li>
+        <li><a href="https://linkedin.com/in/muhammad-abdullah683" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+      <button class="btn" id="cp" type="button">Copy email</button><span id="cpm" aria-live="polite"></span>
+    </section>
+
+    <footer>Muhammad Abdullah, Lahore, Pakistan</footer>
+  </div>
+  
+</div>
+</body>
+</html>
